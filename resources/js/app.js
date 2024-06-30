@@ -5,6 +5,7 @@ import { ZiggyVue } from 'ziggy';
 import { InertiaProgress } from '@inertiajs/progress';
 import '../css/app.css';
 import { createI18n } from 'vue-i18n';
+import store from './store'
 
 InertiaProgress.init({
     delay: 0,
@@ -43,10 +44,12 @@ createInertiaApp({
             app.use(plugin)
                 .use(ZiggyVue)
                 .use(i18n)
+                .use(store)
                 .mount(el);
 
             // Set the direction based on the locale
             document.documentElement.dir = props.initialPage.props.local_dir;
+            store.dispatch("loadLastSearch");
         });
     },
 });

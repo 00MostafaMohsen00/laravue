@@ -59,9 +59,17 @@
 
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+import { useStore } from "vuex";
+import { mapGetters } from "vuex";
+import { computed } from "vue";
+import { watch } from "vue";
 const props = defineProps({
     filters: Object,
 });
+
+const store = useStore();
+
+const lastSearch = computed(() => store.getters.lastSearch);
 
 const filterForm = useForm({
     priceFrom: props.filters.priceFrom ?? null,
@@ -72,7 +80,23 @@ const filterForm = useForm({
     areaTo: props.filters.areaTo ?? null,
 });
 
+watch(
+    lastSearch,
+    (newValue) => {
+        if (newValue) {
+            filterForm.priceFrom = newValue.priceFrom ?? null;
+            filterForm.priceTo = newValue.priceTo ?? null;
+            filterForm.beds = newValue.beds ?? null;
+            filterForm.baths = newValue.baths ?? null;
+            filterForm.areaFrom = newValue.areaFrom ?? null;
+            filterForm.areaTo = newValue.areaTo ?? null;
+        }
+    },
+    { immediate: true }
+);
+
 const filter = () => {
+    store.dispatch("setLastSearch", filterForm);
     filterForm.get(route("listeing.index"), {
         preserveState: true,
         preserveScroll: true,
@@ -86,6 +110,8 @@ const reset = () => {
     filterForm.baths = null;
     filterForm.areaFrom = null;
     filterForm.areaTo = null;
+
+    store.dispatch("setLastSearch", null);
     filter();
 };
 </script>
