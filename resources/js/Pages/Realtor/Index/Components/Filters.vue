@@ -84,6 +84,7 @@ watch(
         router.get(route("realtor.listeing.index"), filterForm, {
             replace: true,
             preserveState: true,
+            preserveScroll: true,
         });
     }),
     1000
