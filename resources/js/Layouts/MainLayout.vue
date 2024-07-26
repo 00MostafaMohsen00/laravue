@@ -22,21 +22,23 @@
                     <button class="btn-outline" @click="toggleLocale">
                         {{ local_name }}
                     </button>
-                    <div
-                        v-if="isMenuOpen"
-                        class="origin-top-right absolute right-30 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800"
-                    >
-                        <div class="py-1">
-                            <button
-                                v-for="(lang, index) in langs"
-                                :key="index"
-                                class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 w-full"
-                                @click="setLocale(index)"
-                            >
-                                {{ lang["native"] }}
-                            </button>
+                    <transition>
+                        <div
+                            v-if="isMenuOpen"
+                            class="origin-top-right absolute right-30 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800"
+                        >
+                            <div class="py-1">
+                                <button
+                                    v-for="(lang, index) in langs"
+                                    :key="index"
+                                    class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 w-full"
+                                    @click="setLocale(index)"
+                                >
+                                    {{ lang["native"] }}
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </transition>
 
                     <div v-if="user" class="flex items-center gap-4">
                         <Link :href="route('notifications.index')">
@@ -77,13 +79,14 @@
         </div>
     </header>
     <main class="container mx-auto p-4 w-full">
-        <div
-            v-if="message && showMessage"
-            class="mb-4 border rounded shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2"
-        >
-            {{ message }}
-        </div>
-
+        <transition>
+            <div
+                v-if="message && showMessage"
+                class="mb-4 border rounded shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2"
+            >
+                {{ message }}
+            </div>
+        </transition>
         <slot></slot>
     </main>
     <!-- Print the success message -->
@@ -139,6 +142,18 @@ const local = computed(() => {
 });
 
 const isMenuOpen = ref(false);
+
+onBeforeMount(() => {
+    // Add event listener to close the menu when the user clicks outside of the menu
+    window.addEventListener("click", (event) => {
+        if (!event.target.classList.contains("btn-outline")) {
+            isMenuOpen.value = false;
+        }
+    });
+    window.addEventListener("scroll", () => {
+        isMenuOpen.value = false;
+    });
+});
 const toggleLocale = () => {
     isMenuOpen.value = !isMenuOpen.value;
 };
@@ -152,4 +167,5 @@ const setLocale = (selectedlocale) => {
 const app_name = computed(() => {
     return import.meta.env.VITE_APP_NAME;
 });
+//
 </script>
