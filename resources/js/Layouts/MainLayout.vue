@@ -87,14 +87,18 @@
                 {{ message }}
             </div>
         </transition>
+        <transition>    
+            <Loader />
+        </transition>
         <slot></slot>
     </main>
     <!-- Print the success message -->
 </template>
 
 <script setup>
-import { Link, usePage } from "@inertiajs/vue3";
+import { Link, usePage, router } from "@inertiajs/vue3";
 import { computed, watch, ref, onMounted, onBeforeMount } from "vue";
+import Loader from "@/Components/UI/Loader.vue";
 const page = usePage();
 const showMessage = ref(false);
 const message = computed(() => {
