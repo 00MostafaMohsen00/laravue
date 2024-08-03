@@ -1,9 +1,11 @@
 <template>
-    <div class="loader dark:bg-gray-900 bg-white" v-if="isLoading">
-        <div class="one"></div>
-        <div class="two"></div>
-        <div class="three"></div>
-    </div>
+    <transition>
+        <div class="loader dark:bg-gray-900 bg-white" v-if="isLoading">
+            <div class="one dark:bg-gray-500 bg-indigo-600"></div>
+            <div class="two dark:bg-gray-500 bg-indigo-600"></div>
+            <div class="three dark:bg-gray-500 bg-indigo-600"></div>
+        </div>
+    </transition>
 </template>
 
 <script setup>
@@ -40,7 +42,7 @@ onUnmounted(() => {
 
 .loader {
     position: absolute;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -53,7 +55,6 @@ onUnmounted(() => {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: gold;
     margin: 0 10px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
