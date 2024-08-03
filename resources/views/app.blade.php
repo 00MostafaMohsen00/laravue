@@ -14,7 +14,7 @@
 
 </head>
 
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-300 height-full"
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-300"
     dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
     @inertia
 </body>
