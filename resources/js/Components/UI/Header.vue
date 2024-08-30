@@ -16,22 +16,25 @@
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <button @click.prevent="toggleDark">
-                        {{ emoji }}
-                    </button>
-                    <button class="btn-outline" @click="toggleLocale">
+                    <button
+                        class="btn-outline"
+                        @click="
+                            isMenuOpen = !isMenuOpen;
+                            isMainMenuOpen = false;
+                        "
+                    >
                         {{ local_name }}
                     </button>
                     <transition>
                         <div
                             v-if="isMenuOpen"
-                            class="origin-top-right absolute right-30 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800"
+                            class="origin-top-right absolute right-10 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800"
                         >
                             <div class="py-1">
                                 <button
                                     v-for="(lang, index) in langs"
                                     :key="index"
-                                    class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 w-full"
+                                    class="menu-item"
                                     @click="setLocale(index)"
                                 >
                                     {{ lang["native"] }}
@@ -39,41 +42,77 @@
                             </div>
                         </div>
                     </transition>
-
-                    <div v-if="user" class="flex items-center gap-4">
-                        <Link :href="route('notifications.index')">
-                            <div
-                                class="text-gray-500 relative pr-2 py-2 text-lg"
+                    <button
+                        class="btn-outline flex flex-col gap-0 w-8 relative"
+                        @click="
+                            isMainMenuOpen = !isMainMenuOpen;
+                            isMenuOpen = false;
+                        "
+                    >
+                        <span
+                            v-if="notifications_count > 0"
+                            class="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500 text-white text-xs flex justify-center items-center"
+                        >
+                        </span>
+                        <span v-for="i in 3" :key="i" class="btn-border"></span>
+                    </button>
+                    <transition>
+                        <div
+                            v-if="isMainMenuOpen"
+                            class="origin-top-right absolute right-5 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 flex flex-col justify-center align-center"
+                        >
+                            <button
+                                @click.prevent="toggleDark"
+                                class="menu-item"
                             >
-                                🔔
-                                <div
-                                    v-if="notifications_count > 0"
-                                    class="absolute right-0 top-0 w-5 h-5 bg-red-700 dark:bg-red-400 text-white font-medium border border-white dark:border-gray-900 rounded-full text-xs text-center"
+                                {{ emoji }}
+                            </button>
+                            <div v-if="user" class="flex flex-col gap-1">
+                                <Link
+                                    :href="route('notifications.index')"
+                                    class="menu-item"
                                 >
-                                    {{ notifications_count }}
-                                </div>
+                                    <div
+                                        class="text-gray-500 relative pr-2 py-2 text-lg text-center"
+                                    >
+                                        🔔
+                                        <div
+                                            v-if="notifications_count > 0"
+                                            class="absolute right-14 top-2 w-5 h-5 bg-red-700 dark:bg-red-400 text-white font-medium border border-white dark:border-gray-900 rounded-full text-xs text-center"
+                                        >
+                                            {{ notifications_count }}
+                                        </div>
+                                    </div>
+                                </Link>
+                                <Link
+                                    :href="route('realtor.listeing.index')"
+                                    class="menu-item text-center"
+                                    ><div class="text-sm text-gray-500">
+                                        {{ user.name }}
+                                    </div>
+                                </Link>
+                                <Link
+                                    :href="route('listeing.create')"
+                                    class="menu-item text-center"
+                                    >{{ $t("create") }} +</Link
+                                >
+                                <Link
+                                    class="menu-item text-center"
+                                    :href="route('logout')"
+                                    method="delete"
+                                    as="button"
+                                    >{{ $t("logout") }}</Link
+                                >
                             </div>
-                        </Link>
-                        <Link :href="route('realtor.listeing.index')"
-                            ><div class="text-sm text-gray-500">
-                                {{ user.name }}
+                            <div v-else class="flex items-center gap-4">
+                                <Link
+                                    :href="route('login')"
+                                    class="menu-item text-center"
+                                    >{{ $t("login_register") }}</Link
+                                >
                             </div>
-                        </Link>
-                        <Link :href="route('listeing.create')" class="btn"
-                            >{{ $t("create") }} +</Link
-                        >
-                        <Link
-                            :href="route('logout')"
-                            method="delete"
-                            as="button"
-                            >{{ $t("logout") }}</Link
-                        >
-                    </div>
-                    <div v-else class="flex items-center gap-4">
-                        <Link :href="route('login')" class="btn">{{
-                            $t("login_register")
-                        }}</Link>
-                    </div>
+                        </div>
+                    </transition>
                 </div>
             </nav>
         </div>
@@ -118,20 +157,21 @@ const local = computed(() => {
 });
 
 const isMenuOpen = ref(false);
+const isMainMenuOpen = ref(false);
 onBeforeMount(() => {
     // Add event listener to close the menu when the user clicks outside of the menu
     window.addEventListener("click", (event) => {
         if (!event.target.classList.contains("btn-outline")) {
             isMenuOpen.value = false;
+            isMainMenuOpen.value = false;
         }
     });
     window.addEventListener("scroll", () => {
         isMenuOpen.value = false;
+        isMainMenuOpen.value = false;
     });
 });
-const toggleLocale = () => {
-    isMenuOpen.value = !isMenuOpen.value;
-};
+
 const setLocale = (selectedlocale) => {
     window.location.href = (window.location.href + "/").replace(
         `/${local.value}/`,
