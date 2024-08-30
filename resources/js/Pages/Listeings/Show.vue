@@ -6,10 +6,7 @@
         >
             <section class="mt-4 grid grid-cols-2 gap-1">
                 <div v-for="image in props.listeing.images" :key="image.id">
-                    <img
-                        :src="image.image_url"
-                        class="rounded-md w-full h-full"
-                    />
+                    <Image :src="image.image_url" />
                 </div>
             </section>
         </box>
@@ -118,6 +115,7 @@ import { useMonthlyPayment } from "@/Composable/useMonthlyPayment";
 import MakeOffer from "@/Pages/Listeings/Show/Components/MakeOffer.vue";
 import ShowOffer from "@/Pages/Listeings/Show/Components/ShowOffer.vue";
 import Empty from "@/Components/UI/Empty.vue";
+import Image from "@/Components/UI/Image.vue";
 const insertRate = ref(2.5);
 const years = ref(25);
 

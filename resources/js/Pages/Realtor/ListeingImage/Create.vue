@@ -37,7 +37,7 @@
                 :key="image.id"
                 class="flex flex-col justify-between"
             >
-                <img :src="image.image_url" class="rounded-md w-full h-full" />
+                <Image :src="image.image_url" />
                 <Link
                     :href="route('images.destroy', image.id)"
                     method="delete"
@@ -54,6 +54,7 @@
 import Box from "@/Components/UI/Box.vue";
 import { useForm } from "@inertiajs/vue3";
 import Error from "@/Components/UI/Error.vue";
+import Image from "@/Components/UI/Image.vue";
 import { computed } from "vue";
 import { router } from "@inertiajs/vue3";
 import NProgress from "nprogress";

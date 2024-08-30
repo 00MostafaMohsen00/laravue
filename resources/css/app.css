@@ -36,7 +36,7 @@
         @apply p-2 rounded-md border  shadow-sm border-gray-300 dark:border-gray-800 hover:border-gray-400 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-800
     }
     .btn-border{
-        @apply  border border-b mb-1 w-full border-gray-700
+        @apply  border border-b mb-1 w-full border-gray-500
     }
     .menu-item{
         @apply block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 w-full
