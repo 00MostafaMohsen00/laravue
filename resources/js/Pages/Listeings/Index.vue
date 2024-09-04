@@ -13,11 +13,13 @@
     >
         <pagination :links="listeings.links" />
     </div>
+    <Empty v-if="listeings.data.length == 0">{{ $t("no_listeing") }}</Empty>
 </template>
 <script setup>
 import Listeing from "@/Pages/Listeings/Index/Components/Listeing.vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import Filters from "@/Pages/Listeings/Index/Components/Filters.vue";
+import Empty from "@/Components/UI/Empty.vue";
 defineProps({
     listeings: Object,
     filters: Object,
