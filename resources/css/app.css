@@ -11,11 +11,11 @@
     }
 
     .btn{
-        @apply bg-indigo-600 dark:bg-indigo-300 hover:bg-indigo-500 text-white font-medium p-2 rounded-md
+        @apply bg-indigo-600 dark:bg-indigo-300 hover:bg-indigo-500 text-white font-medium p-2 rounded-md cursor-pointer
     }
 
     .btn-red{
-        @apply bg-red-500 dark:bg-red-300 hover:bg-red-500 text-white font-medium p-2 rounded-md
+        @apply bg-red-500 dark:bg-red-300 hover:bg-red-500 text-white font-medium p-2 rounded-md cursor-pointer
     }
 
     .error{
@@ -29,14 +29,14 @@
         @apply placeholder:text-gray-400 dark:placeholder:text-gray-600 border border-l-0 border-gray-200 dark:border-gray-700 rounded-t-md rounded-r-md rounded-b-md rounded-l-none text-sm font-medium text-gray-600 dark:text-gray-400 dark:bg-gray-800
     }
     .btn-dark{
-        @apply bg-gray-600  hover:bg-gray-500 text-white font-medium p-2 rounded-md
+        @apply bg-gray-600  hover:bg-gray-500 text-white font-medium p-2 rounded-md cursor-pointer
     }
 
     .btn-outline{
-        @apply p-2 rounded-md border  shadow-sm border-gray-300 dark:border-gray-800 hover:border-gray-400 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-800
+        @apply p-2 rounded-md border  shadow-sm border-gray-300 dark:border-gray-800 hover:border-gray-400 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-800 cursor-pointer
     }
     .btn-border{
-        @apply  border border-b mb-1 w-full border-gray-500
+        @apply  border border-b mb-1 w-full border-gray-500 cursor-pointer
     }
     .menu-item{
         @apply block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 w-full
