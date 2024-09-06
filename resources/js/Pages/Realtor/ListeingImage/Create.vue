@@ -27,6 +27,18 @@
                     />
                 </div>
             </section>
+            <div class="flex" v-if="form.images">
+                <Box
+                    v-for="(preview, index) in previews"
+                    :key="index"
+                    class="flex flex-col"
+                >
+                    <Image :src="preview" class="h-32" />
+                    <button class="btn-outline m-2" @click="remove(index)">
+                        {{ $t("delete") }}
+                    </button>
+                </Box>
+            </div>
         </form>
     </box>
     <box v-if="listeing.images.length">
@@ -55,7 +67,7 @@ import Box from "@/Components/UI/Box.vue";
 import { useForm } from "@inertiajs/vue3";
 import Error from "@/Components/UI/Error.vue";
 import Image from "@/Components/UI/Image.vue";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { router } from "@inertiajs/vue3";
 import NProgress from "nprogress";
 import { Link } from "@inertiajs/vue3";
@@ -72,9 +84,14 @@ const form = useForm({
     images: [],
 });
 
+const previews = ref([]);
+
 const submit = () => {
     form.post(route("images.store", props.listeing.id), {
-        onSuccess: () => form.reset("images"),
+        onSuccess: () => {
+            form.reset("images");
+            previews.value = [];
+        },
     });
 };
 
@@ -82,14 +99,25 @@ const addFiles = (event) => {
     const files = event.target.files;
     for (const image of files) {
         form.images.push(image);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previews.value.push(e.target.result); // Add preview URL
+        };
+        reader.readAsDataURL(image); // Convert file to data URL
     }
 };
 
 const reset = () => {
     form.reset("images");
+    previews.value = [];
 };
 
 const formErrors = computed(() => {
     return Object.values(form.errors);
 });
+
+const remove = (index) => {
+    form.images.splice(index, 1);
+    previews.value.splice(index, 1);
+};
 </script>

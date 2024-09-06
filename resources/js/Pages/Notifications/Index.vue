@@ -48,6 +48,7 @@ import Empty from "@/Components/UI/Empty.vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import { Link } from "@inertiajs/vue3";
 import ListeingPrice from "@/Components/ListeingPrice.vue";
+
 const props = defineProps({
     notifications: Object,
 });

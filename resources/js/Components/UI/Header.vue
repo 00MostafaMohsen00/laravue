@@ -120,14 +120,20 @@
 </template>
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3";
-import { computed, onMounted, ref, onBeforeMount } from "vue";
+import { computed, onMounted, ref, onBeforeMount, watch } from "vue";
+import Pusher from "pusher-js";
 const page = usePage();
 const user = computed(() => page.props.user);
-const notifications_count = computed(() => {
-    return Math.min(page.props.notifications_count, 9);
-});
 
 const isDark = ref(false);
+
+const notifications_count = ref(Math.min(page.props.notifications_count, 9));
+watch(
+    () => page.props.notifications_count,
+    (newCount, oldCount) => {
+        return (notifications_count.value = newCount);
+    }
+);
 onMounted(() => {
     if (localStorage.getItem("isDark") === "true") {
         isDark.value = true;
@@ -136,7 +142,21 @@ onMounted(() => {
         document.documentElement.classList.remove("dark");
         isDark.value = false;
     }
+
+    // Initialize Pusher
+    const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
+        cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+        encrypted: true,
+    });
+
+    // Subscribe to the channel and event you want to listen to
+    const channel = pusher.subscribe(`user.${user.value.id}`); // Use a unique channel for each user
+
+    channel.bind("NewOffer", (data) => {
+        notifications_count.value++; // Increment notification count or handle it according to your logic
+    });
 });
+
 const toggleDark = () => {
     isDark.value = !isDark.value;
     document.documentElement.classList.toggle("dark");

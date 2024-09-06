@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewOffer;
 use App\Http\Requests\OfferRequest;
 use App\Models\Listeing;
 use App\Models\Offer;
@@ -30,6 +31,7 @@ class OfferController extends Controller
             'user_id' => auth()->user()->id,
         ]);
         $listeing->owner->notify(new OfferMade($offer));
+        event(new NewOffer($listeing->user_id));
 
         return redirect()->back()->with('success', __('lang.offer_created'));
     }
