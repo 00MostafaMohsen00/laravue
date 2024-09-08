@@ -1,6 +1,6 @@
 <template>
     <Header />
-    <main class="container mx-auto p-4 w-full min-h-screen pb-16">
+    <main class="container mx-auto p-4 w-full min-h-screen">
         <Message />
         <Loader />
         <slot></slot>
