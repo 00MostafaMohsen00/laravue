@@ -1,5 +1,5 @@
 <template>
-    <footer class="bottom-0 w-full right-0 left-0">
+    <footer class="w-full">
         <Box class="flex justify-center align-center my-5 mx-2">
             <span class="font-bold text-indigo-500">{{ app_name }} </span>
         </Box>
