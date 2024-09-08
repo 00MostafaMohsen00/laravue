@@ -1,6 +1,6 @@
 <template>
     <header
-        class="border-b bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 w-full"
+        class="border-b bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 w-full sticky top-0 z-50"
     >
         <div class="container mx-auto">
             <nav class="p-4 flex justify-between items-center">
