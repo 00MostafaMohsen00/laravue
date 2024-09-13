@@ -8,6 +8,7 @@
                     class="border rounded-md file:px-4 file:py-2 border-gray-200 dark:border-gray-700 file:text-gray-700 file:dark:text-gray-400 file:border-0 file:bg-gray-100 dark:file:bg-gray-800 file:font-medium file:hover:bg-gray-200 dark:file:hover:bg-gray-700 file:hover:cursor-pointer file:mr-4"
                     multiple
                     @input="addFiles"
+                    @drop="addFiles"
                 />
                 <button
                     type="submit"
@@ -33,7 +34,7 @@
                     :key="index"
                     class="flex flex-col"
                 >
-                    <Image :src="preview" class="h-32" />
+                    <Image :src="preview" class="h-32 max-w-md" />
                     <button class="btn-outline m-2" @click="remove(index)">
                         {{ $t("delete") }}
                     </button>
