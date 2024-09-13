@@ -5,7 +5,8 @@ import { ZiggyVue } from 'ziggy';
 import { InertiaProgress } from '@inertiajs/progress';
 import '../css/app.css';
 import { createI18n } from 'vue-i18n';
-import store from './store'
+import store from './store';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 InertiaProgress.init({
     delay: 0,
