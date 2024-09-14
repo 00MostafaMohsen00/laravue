@@ -69,5 +69,9 @@
     "for": "ل",
     "no_notifications":"لا يوجد اشعارات",
     "your_notifications" : "اشعاراتك",
-    "accepted" : "مقبول"
+    "accepted" : "مقبول",
+    "cancel" :"الغاء",
+    "yes_delete_it" : "نعم، حذفها.",
+    "are_you_sure" : "هل انت متأكد؟",
+    "you_will_not_be_able_to_revert_this" : "لا يمكنك التراجع عن هذا!"
 }
