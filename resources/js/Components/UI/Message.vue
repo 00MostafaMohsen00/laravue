@@ -1,24 +1,26 @@
 <template></template>
 
 <script setup>
-import { computed, watch } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import { useToast } from "vue-toast-notification";
+import { watchEffect } from "vue";
 
 const page = usePage();
-const message = computed(() => {
-    return page.props.flash.success;
-});
+const toast = useToast();
 
-watch(message, () => {
-    if (message.value)
-        useToast().open({
-            message: message.value,
+watchEffect(() => {
+    const message = page.props.flash.success;
+
+    if (message) {
+        toast.open({
+            message: message,
             type: "success",
             position: "top-right",
             duration: 3000,
             dismissible: true,
             queue: false,
         });
+        page.props.flash.success = null;
+    }
 });
 </script>

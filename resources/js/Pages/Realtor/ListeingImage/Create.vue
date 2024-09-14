@@ -28,14 +28,17 @@
                     />
                 </div>
             </section>
-            <div class="flex" v-if="form.images">
+            <div class="grid grid-cols-3 gap-4" v-if="previews">
                 <Box
                     v-for="(preview, index) in previews"
                     :key="index"
                     class="flex flex-col"
                 >
                     <Image :src="preview" class="h-32 max-w-md" />
-                    <button class="btn-outline m-2" @click="remove(index)">
+                    <button
+                        class="btn-outline m-2"
+                        @click.prevent="remove(index)"
+                    >
                         {{ $t("delete") }}
                     </button>
                 </Box>
@@ -51,13 +54,7 @@
                 class="flex flex-col justify-between"
             >
                 <Image :src="image.image_url" />
-                <Link
-                    :href="route('images.destroy', image.id)"
-                    method="delete"
-                    as="button"
-                    class="btn-outline w-full mt-2 text-sm"
-                    >{{ $t("delete") }}</Link
-                >
+                <DeleteButton :url="route('images.destroy', image.id)" />
             </div>
         </section>
     </box>
@@ -68,10 +65,10 @@ import Box from "@/Components/UI/Box.vue";
 import { useForm } from "@inertiajs/vue3";
 import Error from "@/Components/UI/Error.vue";
 import Image from "@/Components/UI/Image.vue";
+import DeleteButton from "@/Components/UI/DeleteButton.vue";
 import { computed, ref } from "vue";
 import { router } from "@inertiajs/vue3";
 import NProgress from "nprogress";
-import { Link } from "@inertiajs/vue3";
 router.on("progress", (event) => {
     if (event.detail.progress.percentage) {
         NProgress.set((event.detail.progress.percentage / 100) * 0.9);
