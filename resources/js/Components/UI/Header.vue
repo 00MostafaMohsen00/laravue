@@ -127,13 +127,12 @@ const user = computed(() => page.props.user);
 
 const isDark = ref(false);
 
-const notifications_count = ref(0);
-let pusher = null;
-let channel = null;
+const notifications_count = ref(page.props.notifications_count);
+let pusher, channel;
 watch(
     () => page.props.notifications_count,
-    (newCount) => {
-        notifications_count.value = Math.min(newCount, 9);
+    () => {
+        notifications_count.value = Math.min(page.props.notifications_count, 9);
     }
 );
 
@@ -150,16 +149,20 @@ onMounted(() => {
 watch(
     user,
     (newUser, oldUser) => {
-        if (user.value) {
+        if (newUser && newUser.id) {
+            if (channel) {
+                channel.unbind("NewOffer");
+                pusher.unsubscribe(`user.${oldUser?.id}`);
+            }
             pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
                 cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
                 encrypted: true,
             });
-
-            channel = pusher.subscribe(`user.${user.value.id}`); // Use a unique channel for each user
+            pusher.logToConsole = true;
+            channel = pusher.subscribe(`user.${newUser.id}`); // Use a unique channel for each user
 
             channel.bind("NewOffer", (data) => {
-                notifications_count.value++;
+                notifications_count.value += 1;
             });
         } else {
             if (channel) {
