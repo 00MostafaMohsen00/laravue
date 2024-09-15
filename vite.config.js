@@ -20,4 +20,15 @@ export default defineConfig({
             ziggy: path.resolve('vendor/tightenco/ziggy/dist/index.esm.js'),
         },
     },
+    server:{
+        host: '0.0.0.0',
+        port: 3000,
+        strictPort: true,
+        hmr: {
+            host: '192.168.1.8',
+        },
+        watch: {
+            usePolling: true,
+        },
+    }
 });
