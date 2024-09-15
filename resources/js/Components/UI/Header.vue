@@ -127,13 +127,16 @@ const user = computed(() => page.props.user);
 
 const isDark = ref(false);
 
-const notifications_count = ref(Math.min(page.props.notifications_count, 9));
+const notifications_count = ref(0);
+let pusher = null;
+let channel = null;
 watch(
     () => page.props.notifications_count,
-    (newCount, oldCount) => {
-        return (notifications_count.value = newCount);
+    (newCount) => {
+        notifications_count.value = Math.min(newCount, 9);
     }
 );
+
 onMounted(() => {
     if (localStorage.getItem("isDark") === "true") {
         isDark.value = true;
@@ -142,20 +145,36 @@ onMounted(() => {
         document.documentElement.classList.remove("dark");
         isDark.value = false;
     }
-
-    // Initialize Pusher
-    const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
-        cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
-        encrypted: true,
-    });
-
-    // Subscribe to the channel and event you want to listen to
-    const channel = pusher.subscribe(`user.${user.value.id}`); // Use a unique channel for each user
-
-    channel.bind("NewOffer", (data) => {
-        notifications_count.value++; // Increment notification count or handle it according to your logic
-    });
 });
+
+watch(
+    user,
+    (newUser, oldUser) => {
+        if (user.value) {
+            pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
+                cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+                encrypted: true,
+            });
+
+            channel = pusher.subscribe(`user.${user.value.id}`); // Use a unique channel for each user
+
+            channel.bind("NewOffer", (data) => {
+                notifications_count.value++;
+            });
+        } else {
+            if (channel) {
+                console.log("Unsubscribing from notifications");
+                channel.unbind("NewOffer");
+                pusher.unsubscribe(`user.${oldUser.id}`);
+                pusher.disconnect();
+                console.log(channel);
+                console.log(pusher);
+                notifications_count.value = 0;
+            }
+        }
+    },
+    { immediate: true }
+);
 
 const toggleDark = () => {
     isDark.value = !isDark.value;
