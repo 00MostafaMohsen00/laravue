@@ -10,5 +10,5 @@ return [
     "offer_created" => "Offer Created Successfully . . .",
     "offer_accepted" => "Offer Accepted Successfully . . .",
     'listeing_restored' => 'Listeing Restored Successfully . . .',
-    'account_created' => 'Account created successfully.',
+    'account_created' => 'Account Created Successfully.',
 ];
