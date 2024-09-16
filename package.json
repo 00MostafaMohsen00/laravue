@@ -24,7 +24,7 @@
         "@inertiajs/vue3": "^1.1.0",
         "lodash": "^4.17.21",
         "pusher-js": "^8.4.0-rc2",
-        "sweetalert2": "^11.14.0",
+        "sweetalert2": "^11.6.13",
         "tailwindcss-rtl": "^0.9.0",
         "vue-i18n": "^9.13.1",
         "vue-toast-notification": "^3.1.2",
