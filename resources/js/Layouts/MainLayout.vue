@@ -2,8 +2,10 @@
     <Header />
     <main class="container mx-auto p-4 w-full min-h-screen">
         <Message />
-        <Loader v-if="isLoading" />
-        <slot v-else></slot>
+        <Loader v-show="isLoading" />
+        <div v-show="!isLoading">
+            <slot></slot>
+        </div>
     </main>
     <Footer />
     <!-- Print the success message -->
