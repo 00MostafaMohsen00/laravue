@@ -7,12 +7,12 @@ use App\Http\Requests\OfferRequest;
 use App\Models\Listeing;
 use App\Models\Offer;
 use App\Notifications\OfferMade;
-use Illuminate\Http\Request;
 
 class OfferController extends Controller
 {
     public function index($id)
     {
+
         $listeing = auth()->user()->listeings()->withTrashed()->findOrFail($id);
         $offers = $listeing->offers;
         return inertia('Offers/Index', [
@@ -25,7 +25,8 @@ class OfferController extends Controller
 
         $listeing = Listeing::findOrFail($id);
         $this->authorize('view', $listeing);
-
+        if ($listeing->user_id == auth()->user()->id)
+            abort(403);
         $offer  = $listeing->offers()->create([
             'amount' => $request->amount,
             'user_id' => auth()->user()->id,

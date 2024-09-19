@@ -95,7 +95,11 @@
             <make-offer
                 :listeing="listeing"
                 @offer-updated="offer = $event"
-                v-if="!listeing.offers.length && !listeing.sold_at"
+                v-if="
+                    !listeing.offers.length &&
+                    !listeing.sold_at &&
+                    listeing.user_id != user.id
+                "
             />
             <show-offer
                 v-if="listeing.offers.length"
@@ -110,17 +114,21 @@ import ListeingAddress from "@/Components/ListeingAddress.vue";
 import ListeingSpace from "@/Components/ListeingSpace.vue";
 import ListeingPrice from "@/Components/ListeingPrice.vue";
 import Box from "@/Components/UI/Box.vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useMonthlyPayment } from "@/Composable/useMonthlyPayment";
 import MakeOffer from "@/Pages/Listeings/Show/Components/MakeOffer.vue";
 import ShowOffer from "@/Pages/Listeings/Show/Components/ShowOffer.vue";
 import Empty from "@/Components/UI/Empty.vue";
 import Image from "@/Components/UI/Image.vue";
+import { usePage } from "@inertiajs/vue3";
 const insertRate = ref(2.5);
 const years = ref(25);
-
+const page = usePage();
 const props = defineProps({
     listeing: Object,
+});
+const user = computed(() => {
+    return page.props.user;
 });
 const offer = ref(props.listeing.price);
 const { monthlyPayment, totalPaid, totalInsert } = useMonthlyPayment(

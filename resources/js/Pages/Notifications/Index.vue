@@ -27,7 +27,7 @@
             </div>
             <div>
                 <Link
-                    class="btn-outline text-xs font-medium uppercase"
+                    class="btn-outline text-xs font-medium uppercase text-nowrap"
                     v-if="!notification.read_at"
                     :href="route('notifications.edit', notification.id)"
                     >{{ $t("mark_as_read") }}</Link

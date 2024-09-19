@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Listeing;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class ListeingPolicy
 {
@@ -30,7 +29,6 @@ class ListeingPolicy
         if ($user->id == $listeing->user_id) {
             return true;
         }
-
         return $listeing->sold_at == null;
     }
 
