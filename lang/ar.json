@@ -73,5 +73,6 @@
     "cancel" :"الغاء",
     "yes_delete_it" : "نعم، حذفها.",
     "are_you_sure" : "هل انت متأكد؟",
-    "you_will_not_be_able_to_revert_this" : "لا يمكنك التراجع عن هذا!"
+    "you_will_not_be_able_to_revert_this" : "لا يمكنك التراجع عن هذا!",
+    "drop_images_here" : "اسحب الصور هنا"
 }
