@@ -74,5 +74,6 @@
     "cancel" :"Cancel",
     "yes_delete_it" : "Yes, Delete It.",
     "are_you_sure" : "Are you sure?",
-    "you_will_not_be_able_to_revert_this" : "You Will Not Be Able to Revert This!"
+    "you_will_not_be_able_to_revert_this" : "You Will Not Be Able to Revert This!",
+    "drop_images_here" : "Drop images here"
 }
