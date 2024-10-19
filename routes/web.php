@@ -1,14 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListeingController;
 use App\Http\Controllers\ListeingImageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\RealtorListeingController;
 use App\Http\Controllers\UserController;
-use App\Models\ListeingImage;
 use Illuminate\Support\Facades\Route;
 
 /*

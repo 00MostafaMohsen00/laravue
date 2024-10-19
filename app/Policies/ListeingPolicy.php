@@ -7,12 +7,12 @@ use App\Models\User;
 
 class ListeingPolicy
 {
-    public function before(?User $user, $ability)
-    {
-        if ($user && $user->is_admin) {
-            return true;
-        }
-    }
+    // public function before(?User $user, $ability)
+    // {
+    //     if ($user && $user->is_admin) {
+    //         return true;
+    //     }
+    // }
     /**
      * Determine whether the user can view any models.
      */

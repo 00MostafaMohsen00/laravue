@@ -75,5 +75,13 @@
     "yes_delete_it" : "Yes, Delete It.",
     "are_you_sure" : "Are you sure?",
     "you_will_not_be_able_to_revert_this" : "You Will Not Be Able to Revert This!",
-    "drop_images_here" : "Drop images here"
+    "drop_images_here" : "Drop images here",
+    "admins" : "Admins",
+    "users" : "Users",
+    "roles" : "Roles",
+    "permissions" : "Permissions",
+    "view" : "View",
+    "no_admin" : "No Admins",
+    "no_user" : "No Users",
+    "no_role" : "No Roles"
 }
