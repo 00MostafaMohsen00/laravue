@@ -74,5 +74,13 @@
     "yes_delete_it" : "نعم، حذفها.",
     "are_you_sure" : "هل انت متأكد؟",
     "you_will_not_be_able_to_revert_this" : "لا يمكنك التراجع عن هذا!",
-    "drop_images_here" : "اسحب الصور هنا"
+    "drop_images_here" : "اسحب الصور هنا",
+    "admins" : "المديرين",
+    "users" : "المستخدمين",
+    "roles" : "الادوار",
+    "permissions" : "الصلاحيات",
+    "view" : "عرض",
+    "no_admin" : "لا يوجد مديرين",
+    "no_user" : "لا يوجد مستخدمين",
+    "no_role" : "لا يوجد ادوار"
 }

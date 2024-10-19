@@ -37,12 +37,21 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        if (auth()->guard('admin')->check()) {
+            $user = auth()->guard('admin')->user();
+            $user_role =  auth()->guard('admin')->user()->roles[0]->name;
+            $user_permissions = auth()->guard('admin')->user()->roles[0]->permissions->pluck('name')->toArray();
+        } else {
+            $user = auth()->user();
+        }
         return array_merge(parent::share($request), [
             'flash' => [
                 'success' => $request->session()->get('success'),
             ],
-            'user' => auth()->user() ?? null,
-            'notifications_count' => auth()->user() ? auth()->user()->unreadNotifications()->count() : null,
+            'user' => $user ?? null,
+            'user_role' => $user_role ?? null,
+            'user_permissions' => $user_permissions ?? null,
+            'notifications_count' => auth('web')->user() ? auth('web')->user()->unreadNotifications()->count() : null,
             'languages' => LaravelLocalization::getSupportedLocales(),
             'local_name' => FacadesLaravelLocalization::getCurrentLocaleNative(),
             'local_code' => FacadesLaravelLocalization::getCurrentLocale(),
