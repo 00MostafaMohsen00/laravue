@@ -51,11 +51,11 @@ const tabs = ref([
         perm: "view users",
         routes: ["users.index", "users.create", "users.edit"],
     },
-    // {
-    //     title: t("Listeings"),
-    //     link: "listeings.index",
-    //     permission: "view listeings",
-    //     routes: ["listeings.index", "listeings.create", "listeings.edit"],
-    // },
+    {
+        title: t("Listeings"),
+        link: "listeings.index",
+        permission: "view listeings",
+        routes: ["listeings.index", "listeings.create", "listeings.edit"],
+    },
 ]);
 </script>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ListeingController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,5 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('admins', AdminController::class)->except('show');
     });
     Route::resource('users', UserController::class)->only('index');
+    Route::resource('listeings', ListeingController::class)->only('index');
 });
