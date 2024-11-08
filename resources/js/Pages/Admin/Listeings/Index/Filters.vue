@@ -80,12 +80,23 @@
             />
             <label for="deleted">{{ $t("deleted") }}</label>
         </div>
-        <button type="reset" @click="reset">{{ $t("reset") }}</button>
+        <div class="flex flex-nowrap items-center gap-2">
+            <input
+                v-model="filterForm.soled"
+                type="checkbox"
+                id="soled"
+                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-400"
+            />
+            <label for="soled">{{ $t("sold") }}</label>
+        </div>
+        <button type="reset" @click="reset" class="btn-outline">
+            {{ $t("reset") }}
+        </button>
     </div>
 </template>
 
 <script setup>
-import { useForm, router } from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 import { computed, reactive } from "vue";
 import { watch } from "vue";
 import { useI18n } from "vue-i18n";
@@ -95,8 +106,6 @@ const props = defineProps({
     filters: Object,
 });
 
-const lastSearch = computed(() => store.getters.lastSearch);
-
 const filterForm = reactive({
     priceFrom: props.filters.priceFrom ?? null,
     priceTo: props.filters.priceTo ?? null,
@@ -105,6 +114,7 @@ const filterForm = reactive({
     areaFrom: props.filters.areaFrom ?? null,
     areaTo: props.filters.areaTo ?? null,
     deleted: props.filters.deleted ?? false,
+    soled: props.filters.soled ?? false,
     by: props.filters.by ?? "created_at",
     order: props.filters.order ?? "desc",
     page: props.filters.page ?? 1,
@@ -144,6 +154,7 @@ const reset = () => {
     filterForm.areaFrom = null;
     filterForm.areaTo = null;
     filterForm.deleted = false;
+    filterForm.soled = false;
     filterForm.by = "created_at";
     filterForm.order = "desc";
 };

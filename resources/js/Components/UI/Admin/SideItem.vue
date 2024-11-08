@@ -28,7 +28,7 @@
 
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3";
-import { defineProps, computed, ref, onMounted, onUnmounted } from "vue";
+import { defineProps, computed, ref, onMounted } from "vue";
 import Box from "@/Components/UI/Box.vue";
 import { usePermission } from "@/Composable/usePermission";
 import { isNull } from "lodash";
@@ -51,18 +51,13 @@ const canView = computed(() => {
     }
 });
 const isActive = ref(false);
-// Function to update active state based on route name
 const updateIsActive = () => {
-    const currentRouteName = route().current(); // Get current route name
+    const currentRouteName = route().current();
     isActive.value = props.routes.includes(currentRouteName);
 };
 
 onMounted(() => {
     updateIsActive();
     router.on("navigate", updateIsActive);
-});
-
-onUnmounted(() => {
-    router.off("navigate", updateIsActive);
 });
 </script>

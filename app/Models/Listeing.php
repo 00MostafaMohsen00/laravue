@@ -62,7 +62,11 @@ class Listeing extends Model
             ->when($filters['areaTo'] ?? false, function ($query) use ($filters) {
 
                 return $query->where('area', '<=',  $filters['areaTo']);
-            })->when($filters['deleted'] ?? false, function ($query) use ($filters) {
+            })
+            ->when($filters['soled'] ?? false, function ($query) use ($filters) {
+                return $query->whereNotNull('sold_at');
+            })
+            ->when($filters['deleted'] ?? false, function ($query) use ($filters) {
                 return $query->withTrashed();
             })
             ->when($filters['by'] ?? false, function ($query) use ($filters) {
