@@ -32,5 +32,5 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('admins', AdminController::class)->except('show');
     });
     Route::resource('users', UserController::class)->only('index');
-    Route::resource('listeings', ListeingController::class)->only('index');
+    Route::resource('listeings', ListeingController::class)->only('index', 'show', 'destroy');
 });

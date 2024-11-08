@@ -24,7 +24,11 @@
             </div>
             <div>
                 <Link
-                    v-if="!offer.accepted_at && !offer.rejected_at"
+                    v-if="
+                        !offer.accepted_at &&
+                        !offer.rejected_at &&
+                        !admin == '1'
+                    "
                     class="btn-outline text-xs font-medium"
                     as="button"
                     method="post"
@@ -43,6 +47,7 @@ import { computed } from "vue";
 const props = defineProps({
     offer: Object,
     listeing: Object,
+    admin: null,
 });
 
 const difference = computed(() => props.offer.amount - props.listeing.price);
