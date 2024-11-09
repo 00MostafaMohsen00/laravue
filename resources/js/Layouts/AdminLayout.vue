@@ -23,14 +23,18 @@ import Side from "@/Components/UI/Admin/Side.vue";
 import { usePage } from "@inertiajs/vue3";
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { router } from "@inertiajs/vue3";
+import { useStore } from "vuex";
+import { mapGetters } from "vuex";
+
+const store = useStore();
 
 const page = usePage();
 const user = computed(() => page.props.user);
-
+const isSearchActive = computed(() => store.getters.isSearchActive);
 const isLoading = ref(false);
 
 const startLoading = () => {
-    isLoading.value = true;
+    if (!isSearchActive.value) isLoading.value = true;
 };
 const stopLoading = () => {
     isLoading.value = false;
