@@ -50,7 +50,7 @@
 
 <script setup>
 import Box from "@/Components/UI/Box.vue";
-import { defineProps, computed } from "vue";
+import { defineProps, computed, ref } from "vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import Empty from "@/Components/UI/Empty.vue";
 import ListeingAddress from "@/Components/ListeingAddress.vue";
@@ -59,7 +59,7 @@ import ListeingPrice from "@/Components/ListeingPrice.vue";
 import Filters from "@/Pages/Admin/Listeings/Index/Filters.vue";
 import { Link, usePage } from "@inertiajs/vue3";
 import { usePermission } from "@/Composable/usePermission";
-defineProps({
+const props = defineProps({
     listeings: Array,
     filters: Object,
 });

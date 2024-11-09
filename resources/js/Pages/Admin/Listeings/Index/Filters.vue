@@ -101,11 +101,13 @@ import { computed, reactive } from "vue";
 import { watch } from "vue";
 import { useI18n } from "vue-i18n";
 import debounce from "lodash/debounce";
+import { useStore } from "vuex";
 const { t } = useI18n();
 const props = defineProps({
     filters: Object,
 });
 
+const store = useStore();
 const filterForm = reactive({
     priceFrom: props.filters.priceFrom ?? null,
     priceTo: props.filters.priceTo ?? null,
@@ -162,11 +164,13 @@ const reset = () => {
 watch(
     filterForm,
     debounce(() => {
+        store.dispatch("setisSearchActive", true);
         router.get(route("listeings.index"), filterForm, {
             replace: true,
             preserveState: true,
             preserveScroll: true,
         });
+        store.dispatch("setisSearchActive", false);
     }),
     1000
 );

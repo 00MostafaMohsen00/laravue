@@ -1,6 +1,14 @@
 <template>
     <box class="h-screen">
         <template #title> {{ $t("users") }} </template>
+        <div class="flex justify-center text-center my-2">
+            <input
+                type="search"
+                class="input"
+                :placeholder="search"
+                v-model="form.search"
+            />
+        </div>
 
         <div v-if="users.data.length">
             <box
@@ -25,10 +33,29 @@
 
 <script setup>
 import Box from "@/Components/UI/Box.vue";
-import { defineProps } from "vue";
+import { defineProps, watch, reactive } from "vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import Empty from "@/Components/UI/Empty.vue";
-defineProps({
+import { useI18n } from "vue-i18n";
+import { router } from "@inertiajs/vue3";
+import { useStore } from "vuex";
+const store = useStore();
+const { t } = useI18n();
+const props = defineProps({
     users: Array,
+    filters: null,
+});
+const form = reactive({
+    search: props.filters ? props.filters.search : "",
+});
+const search = t("search");
+
+watch(form, () => {
+    store.dispatch("setisSearchActive", true);
+    router.get(route("users.index", form), {
+        preserveState: true,
+        preserveScroll: true,
+    });
+    store.dispatch("setisSearchActive", false);
 });
 </script>

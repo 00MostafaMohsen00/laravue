@@ -83,5 +83,6 @@
     "view" : "View",
     "no_admin" : "No Admins",
     "no_user" : "No Users",
-    "no_role" : "No Roles"
+    "no_role" : "No Roles",
+    "search": "Search"
 }

@@ -3,7 +3,8 @@ import { createStore } from "vuex";
 const store = createStore({
     state() {
         return {
-            lastSearch: null
+            lastSearch: null,
+            isSearchActive: false
         };
     },
     mutations: {
@@ -12,6 +13,12 @@ const store = createStore({
         },
         getLastSearch(state) {
             return state.lastSearch;
+        },
+        setisSearchActive(state,payload) {
+            state.isSearchActive = payload;
+        },
+        getisSearchActive(state) {
+            return state.isSearchActive;
         }
     },
     actions: {
@@ -24,11 +31,26 @@ const store = createStore({
             if(lastSearch) {
                 commit('setLastSearch',JSON.parse(lastSearch));
             }
+        },
+        setisSearchActive({commit},payload) {
+            commit('setisSearchActive',payload);
+            localStorage.setItem('isSearchActive',JSON.stringify(payload));
+        },
+        loadisSearchActive({commit}) {
+            let isSearchActive = localStorage.getItem('isSearchActive');
+            if(isSearchActive) {
+                commit('setisSearchActive',JSON.parse(isSearchActive));
+            }else{
+                commit('setisSearchActive',false);
+            }
         }
     },
     getters: {
         lastSearch(state) {
             return state.lastSearch;
+        },
+        isSearchActive(state) {
+            return state.isSearchActive;
         }
     }
 });

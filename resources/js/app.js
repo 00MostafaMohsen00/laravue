@@ -56,6 +56,7 @@ createInertiaApp({
             // Set the direction based on the locale
             document.documentElement.dir = props.initialPage.props.local_dir;
             store.dispatch("loadLastSearch");
+            store.dispatch("loadisSearchActive");
         });
     },
 });

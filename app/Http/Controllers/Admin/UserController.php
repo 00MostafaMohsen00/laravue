@@ -16,7 +16,17 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = User::paginate(10);
+        $filters = ['search' => request()->search];
+        $users = User::when(request('search'), function ($q) {
+            $q->where('name', 'like', '%' . request('search') . '%')->orWhere('email', 'like', '%' . request('search') . '%');
+        })
+            ->paginate(10);
+        // if (request()->isAjax) {
+        //     return response()->json([
+        //         'status' => true,
+        //         'data' => $users
+        //     ], 200);
+        // }
         return inertia('Admin/Users/Index', get_defined_vars());
     }
 }
