@@ -15,6 +15,12 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (auth()->attempt($credentials, true)) {
+            if (auth()->user()->status == '0') {
+                auth()->logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return back()->withErrors(['email' => __('lang.account_inactive')]);
+            }
             $request->session()->regenerate();
             return redirect()->intended(route('listeing.index'))->with('success', __('auth.success'));
         }

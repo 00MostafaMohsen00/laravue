@@ -84,5 +84,9 @@
     "no_admin" : "No Admins",
     "no_user" : "No Users",
     "no_role" : "No Roles",
-    "search": "Search"
+    "search": "Search",
+    "active" : "Active",
+    "inactive" : "Inactive",
+    "activate" : "Activate",
+    "inactivate" : "Inactivate"
 }

@@ -10,7 +10,7 @@
                     required
                     class="input"
                 />
-                <error v-if="form.errors.email" :error="form.errors.email" />
+                <error v-if="error" :error="error" />
             </div>
             <div class="mt-4">
                 <label for="password" class="label">{{ $t("password") }}</label>
@@ -39,11 +39,20 @@
 </template>
 <script setup>
 import Error from "@/Components/UI/Error.vue";
-import { useForm } from "@inertiajs/vue3";
+import { useForm, usePage } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
+import { computed } from "vue";
 const form = useForm({
     email: null,
     password: null,
+});
+const page = usePage();
+const error = computed(() => {
+    return form.errors.email
+        ? form.errors.email
+        : page.props.errors
+        ? page.props.errors.email
+        : null;
 });
 const save = () => {
     form.post(route("login.save"));

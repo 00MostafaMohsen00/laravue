@@ -28,7 +28,7 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::middleware('auth:web')->group(function () {
+Route::middleware('auth:web', 'isActiveMiddleware')->group(function () {
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('listeing', ListeingController::class)->except('destroy');
     Route::prefix('realtor')->name('realtor.')->group(function () {

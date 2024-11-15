@@ -83,5 +83,9 @@
     "no_admin" : "لا يوجد مديرين",
     "no_user" : "لا يوجد مستخدمين",
     "no_role" : "لا يوجد ادوار",
-    "search" : "بحث"
+    "search" : "بحث",
+    "active" : "نشط",
+    "inactive" : "غير نشط",
+    "activate" : "تفعيل",
+    "inactivate" : "تعطيل"
 }

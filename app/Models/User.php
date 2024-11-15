@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
     ];
 
     /**
@@ -45,9 +46,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public static $rules = [
+        'name' => 'required|string',
+        'email' => 'required|email|unique:users,email,',
+        'password' => 'min:6|',
+        'password_confirmation' => 'required_with:password|same:password',
+    ];
+
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = Hash::make($value);
+        if (!empty($value))
+            $this->attributes['password'] = Hash::make($value);
     }
 
     public function listeings()
