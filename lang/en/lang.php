@@ -12,4 +12,5 @@ return [
     'listeing_restored' => 'Listeing Restored Successfully . . .',
     'account_created' => 'Account Created Successfully.',
     'success' => 'Operation Successful . . .',
+    'account_inactive' => 'Account Inactive . . .',
 ];

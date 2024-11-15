@@ -158,7 +158,7 @@ watch(
                 cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
                 encrypted: true,
             });
-            pusher.logToConsole = true;
+            pusher.logToConsole = false;
             channel = pusher.subscribe(`user.${newUser.id}`); // Use a unique channel for each user
 
             channel.bind("NewOffer", (data) => {
@@ -166,7 +166,6 @@ watch(
             });
         } else {
             if (channel) {
-                console.log("Unsubscribing from notifications");
                 channel.unbind("NewOffer");
                 pusher.unsubscribe(`user.${oldUser.id}`);
                 pusher.disconnect();

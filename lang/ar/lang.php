@@ -12,4 +12,5 @@ return [
     'listeing_restored' => 'تم استعادة القائمة بنجاح . . .',
     'account_created' => 'تم انشاء الحساب بنجاح . . .',
     'success' => 'تمت العملية بنجاح . . .',
+    'account_inactive' => 'حسابك غير مفعل . . .',
 ];
