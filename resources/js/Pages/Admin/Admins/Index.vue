@@ -18,7 +18,7 @@
                         </div>
                         <div class="text-gray-500">
                             {{ $t("roles") }} :
-                            {{ admin.roles[0].name }}
+                            {{ admin.roles[0] ? admin.roles[0].name : "-" }}
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
