@@ -33,7 +33,7 @@
                             :href="route('users.destroy', user.id)"
                             method="delete"
                             as="button"
-                            class="btn"
+                            class="btn-outline"
                         >
                             {{ user.status == "1" ? "❌" : "✅" }}
                         </Link>
