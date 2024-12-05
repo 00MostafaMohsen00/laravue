@@ -8,6 +8,7 @@ import '../css/app.css';
 import { createI18n } from 'vue-i18n';
 import store from './store';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import Vue3Lottie from 'vue3-lottie';
 
 InertiaProgress.init({
     delay: 0,
@@ -51,6 +52,7 @@ createInertiaApp({
                 .use(ZiggyVue)
                 .use(i18n)
                 .use(store)
+                .use(Vue3Lottie)
                 .mount(el);
 
             // Set the direction based on the locale
