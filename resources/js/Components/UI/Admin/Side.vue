@@ -54,7 +54,7 @@ const tabs = ref([
     {
         title: t("Listeings"),
         link: "listeings.index",
-        permission: "view listeings",
+        perm: "view listeings",
         routes: ["listeings.index", "listeings.create", "listeings.edit"],
     },
 ]);
