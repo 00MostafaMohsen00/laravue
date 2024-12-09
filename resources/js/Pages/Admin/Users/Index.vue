@@ -62,6 +62,7 @@ import { useI18n } from "vue-i18n";
 import { router, Link, usePage } from "@inertiajs/vue3";
 import { useStore } from "vuex";
 import { usePermission } from "@/Composable/usePermission";
+import debounce from "lodash/debounce";
 const store = useStore();
 const { t } = useI18n();
 const searchInput = ref();
@@ -77,14 +78,18 @@ const form = reactive({
 });
 const search = t("search");
 
-watch(form, () => {
-    store.dispatch("setisSearchActive", true);
-    router.get(route("users.index", form), {
-        preserveState: true,
-        preserveScroll: true,
-    });
-    store.dispatch("setisSearchActive", false);
-});
+watch(
+    form,
+    debounce(() => {
+        store.dispatch("setisSearchActive", true);
+        router.get(route("users.index", form), {
+            preserveState: true,
+            preserveScroll: true,
+        });
+        store.dispatch("setisSearchActive", false);
+    }),
+    1000
+);
 const perms = computed(() => usePage().props.user_permissions);
 const canDelete = computed(() => {
     const { can } = usePermission("delete users", perms.value);
