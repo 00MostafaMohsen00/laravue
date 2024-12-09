@@ -23,7 +23,7 @@
                     <transition>
                         <div
                             v-if="isMenuOpen"
-                            class="ltr:origin-top-right rtl:origin-top-left rtl:left-10 absolute ltr:right-10 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 z-10"
+                            class="ltr:origin-top-right rtl:origin-top-left rtl:left-10 absolute ltr:right-10 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 z-10 p-2"
                         >
                             <div class="py-1">
                                 <button
@@ -49,7 +49,7 @@
                     <transition>
                         <div
                             v-if="isMainMenuOpen"
-                            class="ltr:origin-top-right rtl:origin-top-left rtl:left-10 absolute ltr:right-10 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 flex flex-col justify-center align-center z-10"
+                            class="ltr:origin-top-right rtl:origin-top-left rtl:left-10 absolute ltr:right-10 top-20 mt-2 w-56 rounded-md shadow-lg border border-md bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 flex flex-col justify-center align-center z-10 p-2"
                         >
                             <button
                                 @click.prevent="toggleDark"

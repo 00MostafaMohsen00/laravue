@@ -30,6 +30,8 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth:web', 'isActiveMiddleware')->group(function () {
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('profile', [AuthController::class, 'profile'])->name('profile');
+    Route::post('profile', [AuthController::class, 'profileSave'])->name('profile.save');
     Route::resource('listeing', ListeingController::class)->except('destroy');
     Route::prefix('realtor')->name('realtor.')->group(function () {
         Route::get('listeing/restore/{id}', [RealtorListeingController::class, 'restore'])->name('listeing.restore');
