@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -35,5 +36,18 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login')->with('success', __('auth.logged_out_succes'));
+    }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        return inertia('Auth/Profile', get_defined_vars());
+    }
+
+    public function profileSave(ProfileRequest $request)
+    {
+        $user = auth()->user();
+        $user->update($request->validated());
+        return redirect()->route('profile')->with('success', __('lang.success'));
     }
 }
