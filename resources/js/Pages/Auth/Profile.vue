@@ -25,6 +25,11 @@
             </div>
             <div class="mt-4 flex flex-col">
                 <input type="submit" :value="$t('save')" class="btn w-full" />
+                <Link
+                    :href="route('change.password')"
+                    class="mb-4 text-sm text-blue-600"
+                    >{{ $t("change_password") }}</Link
+                >
             </div>
         </div>
     </form>

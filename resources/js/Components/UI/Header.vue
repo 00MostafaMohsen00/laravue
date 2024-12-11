@@ -5,9 +5,9 @@
         <div class="container mx-auto">
             <nav class="p-4 flex justify-between items-center">
                 <div class="text-lg font-medium">
-                    <Link :href="route('listeing.index')">{{
-                        $t("Listeings")
-                    }}</Link>
+                    <Link :href="route('listeing.index')" class="btn-outline">
+                        🏠
+                    </Link>
                 </div>
                 <div
                     class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center"
@@ -100,7 +100,7 @@
                                 <Link
                                     :href="route('listeing.create')"
                                     class="menu-item text-center"
-                                    >{{ $t("create") }} +</Link
+                                    >➕</Link
                                 >
                                 <Link
                                     class="menu-item text-center"
