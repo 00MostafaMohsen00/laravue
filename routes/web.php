@@ -5,6 +5,7 @@ use App\Http\Controllers\ListeingController;
 use App\Http\Controllers\ListeingImageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RealtorListeingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth:web', 'isActiveMiddleware')->group(function () {
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('profile', [AuthController::class, 'profile'])->name('profile');
+    Route::get('change/password', [PasswordController::class, 'changePassword'])->name('change.password');
+    Route::post('change/password', [PasswordController::class, 'changePasswordSave'])->name('change.password.save');
     Route::post('profile', [AuthController::class, 'profileSave'])->name('profile.save');
     Route::resource('listeing', ListeingController::class)->except('destroy');
     Route::prefix('realtor')->name('realtor.')->group(function () {
