@@ -21,15 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('confirm/code', [PasswordController::class, 'confirmCodeSave'])->name('otp.save');
 Route::middleware('guest')->group(function () {
     Route::get('/', [AuthController::class, 'login'])->name('login');
     Route::post('/', [AuthController::class, 'loginSave'])->name('login.save');
     Route::get('register', [UserController::class, 'register'])->name('register');
     Route::post('register', [UserController::class, 'registerSave'])->name('register.save');
+    Route::get('forget/password', [PasswordController::class, 'forgetPassword'])->name('forget.password');
+    Route::post('forget/password', [PasswordController::class, 'forgetPasswordSave'])->name('forget.password.save');
+    Route::get('confirm/code', [PasswordController::class, 'confirmCode'])->name('otp');
 });
 
 
 Route::middleware('auth:web', 'isActiveMiddleware')->group(function () {
+    Route::post('reset/password', [PasswordController::class, 'resetPassword'])->name('reset.password');
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('profile', [AuthController::class, 'profile'])->name('profile');
     Route::get('change/password', [PasswordController::class, 'changePassword'])->name('change.password');

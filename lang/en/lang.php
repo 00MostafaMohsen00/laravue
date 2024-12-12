@@ -13,4 +13,6 @@ return [
     'account_created' => 'Account Created Successfully.',
     'success' => 'Operation Successful . . .',
     'account_inactive' => 'Account Inactive . . .',
+    'otp_sent' => 'OTP Sent Successfully . . .',
+    'invalid_otp' => 'Invalid OTP . . .',
 ];

@@ -12,32 +12,8 @@
                 />
                 <error v-if="error" :error="error" />
             </div>
-            <div class="mt-4">
-                <label for="password" class="label">{{ $t("password") }}</label>
-                <input
-                    id="password"
-                    type="password"
-                    v-model="form.password"
-                    required
-                    class="input"
-                />
-                <error
-                    v-if="form.errors.password"
-                    :error="form.errors.password"
-                />
-            </div>
             <div class="mt-4 flex flex-col">
-                <Link
-                    :href="route('register')"
-                    class="mb-4 text-sm text-blue-600"
-                    >{{ $t("dont_have_account") }}</Link
-                >
-                <input type="submit" :value="$t('login')" class="btn w-full" />
-                <Link
-                    :href="route('forget.password')"
-                    class="mb-4 text-sm text-blue-600"
-                    >{{ $t("forget_password") }}</Link
-                >
+                <input type="submit" :value="$t('send')" class="btn w-full" />
             </div>
         </div>
     </form>
@@ -60,6 +36,6 @@ const error = computed(() => {
         : null;
 });
 const save = () => {
-    form.post(route("login.save"));
+    form.post(route("forget.password.save"));
 };
 </script>
