@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Offer::class);
     }
+
+    public function otps()
+    {
+        return $this->hasMany(Otp::class);
+    }
 }

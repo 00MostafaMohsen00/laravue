@@ -90,5 +90,7 @@
     "inactivate": "تعطيل",
     "change_password": "تغيير كلمة المرور الخاصة بك ؟",
     "old_password": "كلمة المرور القديمة",
-    "new_password": "كلمة المرور الجديدة"
+    "new_password": "كلمة المرور الجديدة",
+    "forget_password": "نسيت كلمة المرور ؟",
+    "send": "ارسال"
 }
