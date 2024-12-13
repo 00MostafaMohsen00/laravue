@@ -8,9 +8,11 @@
                     <input
                         v-for="(otpField, index) in otpFields"
                         :key="index"
-                        type="text"
+                        type="tel"
                         maxlength="1"
-                        class="input w-1/12 text-center"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        class="input w-1/4 md:w-1/12 text-center"
                         :ref="(el) => (inputRefs[index] = el)"
                         v-model="otpFields[index]"
                         @input="handleInput(index, $event)"
