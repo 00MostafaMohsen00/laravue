@@ -53,7 +53,7 @@
                     :error="form.errors.password_confirmation"
                 />
             </div>
-            <div class="mt-4 flex flex-col">
+            <div class="my-4 flex flex-col">
                 <Link
                     :href="route('login')"
                     class="mb-4 text-sm text-blue-600"
@@ -65,11 +65,13 @@
                     class="btn w-full"
                 />
             </div>
+            <social-login />
         </div>
     </form>
 </template>
 <script setup>
 import Error from "@/Components/UI/Error.vue";
+import SocialLogin from "@/Pages/Auth/SocialLogin.vue";
 import { useForm } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
 const form = useForm({
