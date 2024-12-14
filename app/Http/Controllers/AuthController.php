@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\ProfileRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -49,5 +51,35 @@ class AuthController extends Controller
         $user = auth()->user();
         $user->update($request->validated());
         return redirect()->route('profile')->with('success', __('lang.success'));
+    }
+
+    public function socialLogin($provider)
+    {
+        if (!in_array($provider, ['facebook', 'google'])) {
+            abort(404);
+        }
+        $url = Socialite::driver($provider)->redirect()->getTargetUrl();
+        return inertia()->location($url);
+    }
+
+    public function socialLoginCallback(Request $request, $provider)
+    {
+        $providerUser = Socialite::driver($provider)->stateless()->user();
+        $user = User::where('email', $providerUser->getEmail())->first();
+        if (!$user) {
+            $data = [
+                'name' => $providerUser->getName(),
+                'email' => $providerUser->getEmail(),
+                'status' => '1',
+                'provider' => $provider,
+            ];
+            $user = User::create($data);
+        } else {
+            if ($user->status == '0') {
+                return redirect()->route('login')->withErrors(['email' => __('lang.account_inactive')]);
+            }
+        }
+        auth()->login($user);
+        return redirect()->intended(route('listeing.index'))->with('success', __('auth.success'));
     }
 }

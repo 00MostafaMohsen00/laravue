@@ -30,6 +30,10 @@ Route::middleware('guest')->group(function () {
     Route::get('forget/password', [PasswordController::class, 'forgetPassword'])->name('forget.password');
     Route::post('forget/password', [PasswordController::class, 'forgetPasswordSave'])->name('forget.password.save');
     Route::get('confirm/code', [PasswordController::class, 'confirmCode'])->name('otp');
+    Route::prefix('{provider}')->group(function ($provider) {
+        Route::get('social/login', [AuthController::class, 'socialLogin'])->name('social.login');
+        Route::any('/callback', [AuthController::class, 'socialLoginCallback']);
+    });
 });
 
 

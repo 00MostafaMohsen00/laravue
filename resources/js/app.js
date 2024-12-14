@@ -9,6 +9,8 @@ import { createI18n } from 'vue-i18n';
 import store from './store';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import Vue3Lottie from 'vue3-lottie';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 InertiaProgress.init({
     delay: 0,

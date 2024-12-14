@@ -39,11 +39,13 @@
                     >{{ $t("forget_password") }}</Link
                 >
             </div>
+            <social-login />
         </div>
     </form>
 </template>
 <script setup>
 import Error from "@/Components/UI/Error.vue";
+import SocialLogin from "@/Pages/Auth/SocialLogin.vue";
 import { useForm, usePage } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
 import { computed } from "vue";
