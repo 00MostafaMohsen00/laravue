@@ -1,6 +1,6 @@
 <template>
     <Header />
-    <div class="flex flex-row">
+    <div class="md:flex md:flex-row grid gap-4">
         <Side class="min-w-60" v-if="user" />
         <main class="container mx-auto p-4 min-h-screen min-w-80">
             <Message />

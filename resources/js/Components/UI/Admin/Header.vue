@@ -1,6 +1,6 @@
 <template>
     <header
-        class="border-b bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 w-full sticky top-0 z-50"
+        class="border-b bg-white bordeer-gray-200 dark:border-gray-700 dark:bg-gray-800 sticky top-0 z-50 w-full"
     >
         <div class="container mx-auto">
             <nav class="p-4 flex justify-between items-center">
@@ -82,8 +82,7 @@
 </template>
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3";
-import { computed, onMounted, ref, onBeforeMount, watch } from "vue";
-import Pusher from "pusher-js";
+import { computed, onMounted, ref, onBeforeMount } from "vue";
 const page = usePage();
 const user = computed(() => page.props.user);
 
