@@ -1,11 +1,16 @@
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <box>
-            <template #title> {{ $t("users") }} </template>
+            <template #title>
+                <i class="fas fa-users icon"></i> {{ $t("Users") }}
+            </template>
             <div class="text-3xl font-bold">{{ users }}</div>
         </box>
         <box>
-            <template #title> {{ $t("Listeings") }} </template>
+            <template #title>
+                <i class="fas fa-home icon"></i>
+                {{ $t("Listeings") }}
+            </template>
             <div class="text-3xl font-bold">{{ listeings }}</div>
         </box>
     </div>

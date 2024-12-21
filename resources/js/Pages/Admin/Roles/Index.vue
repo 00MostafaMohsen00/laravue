@@ -2,7 +2,9 @@
     <box class="h-screen">
         <template #title> {{ $t("roles") }} </template>
         <Link :href="route('roles.create')" class="my-4">
-            <button class="btn-border">+</button>
+            <button class="btn-border">
+                <i class="fas fa-plus icon"></i>
+            </button>
         </Link>
         <div v-if="roles.data.length">
             <box
@@ -12,12 +14,12 @@
             >
                 <div class="flex flex-row justify-between">
                     <div>{{ role.name }}</div>
-                    <div class="flex flex-col gap-2">
+                    <div class="flex flex-col text-center gap-2">
                         <Link
                             :href="route('roles.edit', role.id)"
                             class="btn-outline"
                         >
-                            {{ $t("edit") }}
+                            <i class="fas fa-edit icon"></i>
                         </Link>
                         <delete-button
                             :url="route('roles.destroy', role.id)"

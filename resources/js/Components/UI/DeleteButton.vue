@@ -1,6 +1,6 @@
 <template>
     <button class="btn-outline w-full mt-2 text-sm" @click="deleteImage">
-        {{ $t("delete") }}
+        <i class="fas fa-trash-alt icon"></i>
     </button>
 </template>
 <script setup>

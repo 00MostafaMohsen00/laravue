@@ -33,8 +33,11 @@
                     as="button"
                     method="post"
                     :href="route('offer.accept', offer.id)"
-                    >{{ $t("accept") }}</Link
                 >
+                    <i
+                        class="fas fa-check text-green-500 dark:text-green-600"
+                    ></i>
+                </Link>
             </div>
         </section>
     </box>

@@ -2,50 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-    .label{
-        @apply block mb-1 text-gray-500 dark:text-gray-300 font-medium
+@layer components {
+    .label {
+        @apply block mb-1 text-gray-500 dark:text-gray-300 font-medium;
     }
     .input {
-        @apply block w-full p-2 rounded-md shadow-sm border border-gray-300 dark:border-gray-600 text-gray-500
+        @apply block w-full p-2 rounded-md shadow-sm border border-gray-300 dark:border-gray-600 text-gray-500;
     }
 
-    .btn{
-        @apply bg-indigo-600 dark:bg-indigo-300 hover:bg-indigo-500 text-white font-medium p-2 rounded-md cursor-pointer
+    .btn {
+        @apply bg-indigo-600 dark:bg-indigo-300 hover:bg-indigo-500 text-white font-medium p-2 rounded-md cursor-pointer;
     }
 
-    .btn-red{
-        @apply bg-red-500 dark:bg-red-300 hover:bg-red-500 text-white font-medium p-2 rounded-md cursor-pointer
+    .btn-red {
+        @apply bg-red-500 dark:bg-red-300 hover:bg-red-500 text-white font-medium p-2 rounded-md cursor-pointer;
     }
 
-    .error{
-        @apply text-sm text-red-500 dark:text-red-400
+    .error {
+        @apply text-sm text-red-500 dark:text-red-400;
     }
 
-    .filter-input-l{
-        @apply placeholder:text-gray-400 dark:placeholder:text-gray-600 border  border-gray-200 dark:border-gray-700 rounded-t-md rounded-l-md rounded-b-md rounded-r-none text-sm font-medium text-gray-600 dark:text-gray-400 dark:bg-gray-800
+    .filter-input-l {
+        @apply placeholder:text-gray-400 dark:placeholder:text-gray-600 border  border-gray-200 dark:border-gray-700 rounded-t-md rounded-l-md rounded-b-md rounded-r-none text-sm font-medium text-gray-600 dark:text-gray-400 dark:bg-gray-800;
     }
-    .filter-input-r{
-        @apply placeholder:text-gray-400 dark:placeholder:text-gray-600 border border-l-0 border-gray-200 dark:border-gray-700 rounded-t-md rounded-r-md rounded-b-md rounded-l-none text-sm font-medium text-gray-600 dark:text-gray-400 dark:bg-gray-800
+    .filter-input-r {
+        @apply placeholder:text-gray-400 dark:placeholder:text-gray-600 border border-l-0 border-gray-200 dark:border-gray-700 rounded-t-md rounded-r-md rounded-b-md rounded-l-none text-sm font-medium text-gray-600 dark:text-gray-400 dark:bg-gray-800;
     }
-    .btn-dark{
-        @apply bg-gray-600  hover:bg-gray-500 text-white font-medium p-2 rounded-md cursor-pointer
+    .btn-dark {
+        @apply bg-gray-600  hover:bg-gray-500 text-white font-medium p-2 rounded-md cursor-pointer;
     }
 
-    .btn-outline{
-        @apply p-2 rounded-md border  shadow-sm border-gray-300 dark:border-gray-800 hover:border-gray-400 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-800 cursor-pointer
+    .btn-outline {
+        @apply p-2 rounded-md border  shadow-sm border-gray-300 dark:border-gray-800 hover:border-gray-400 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-800 cursor-pointer;
     }
-    .btn-border{
-        @apply  border border-b mb-1 w-full border-gray-500 cursor-pointer
+    .btn-border {
+        @apply border border-b mb-1 w-full border-gray-500 cursor-pointer;
     }
-    .menu-item{
-        @apply block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 w-full
+    .menu-item {
+        @apply block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 w-full;
     }
-    .checkbox{
-        @apply h-4 w-4 text-blue-600 dark:text-blue-500 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 m-2
+    .checkbox {
+        @apply h-4 w-4 text-blue-600 dark:text-blue-500 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 m-2;
     }
-    .active{
-        @apply dark:bg-gray-800 text-white bg-gray-300
+    .active {
+        @apply dark:bg-gray-800 text-white bg-gray-300;
+    }
+    .icon {
+        @apply text-gray-500 dark:text-gray-600;
     }
 }
 
@@ -59,6 +62,6 @@
     opacity: 0;
 }
 
-body{
+body {
     height: 100vh;
 }

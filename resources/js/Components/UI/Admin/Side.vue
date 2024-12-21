@@ -19,6 +19,7 @@
                 :link="tab.link"
                 :perm="tab.perm ?? null"
                 :routes="tab.routes"
+                :icon="tab.icon"
             />
         </aside>
     </box>
@@ -38,23 +39,27 @@ const tabs = ref([
     {
         title: t("roles"),
         link: "roles.index",
+        icon: "fas fa-users-cog",
         routes: ["roles.index", "roles.create", "roles.edit"],
     },
     {
         title: t("admins"),
         link: "admins.index",
+        icon: "fas fa-user-shield",
         routes: ["admins.index", "admins.create", "admins.edit"],
     },
     {
         title: t("users"),
         link: "users.index",
         perm: "view users",
+        icon: "fas fa-users",
         routes: ["users.index", "users.create", "users.edit"],
     },
     {
         title: t("Listeings"),
         link: "listeings.index",
         perm: "view listeings",
+        icon: "fas fa-home",
         routes: ["listeings.index", "listeings.create", "listeings.edit"],
     },
 ]);

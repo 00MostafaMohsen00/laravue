@@ -6,7 +6,7 @@
             <nav class="p-4 flex justify-between items-center">
                 <div class="text-lg font-medium">
                     <Link :href="route('listeing.index')" class="btn-outline">
-                        🏠
+                        <i class="fas fa-home"></i>
                     </Link>
                 </div>
                 <div
@@ -65,7 +65,7 @@
                                 @click.prevent="toggleDark"
                                 class="menu-item"
                             >
-                                {{ emoji }}
+                                <i :class="emoji"></i>
                             </button>
                             <div v-if="user" class="flex flex-col gap-1">
                                 <Link
@@ -75,7 +75,7 @@
                                     <div
                                         class="text-gray-500 relative pr-2 py-2 text-lg text-center"
                                     >
-                                        🔔
+                                        <i class="fas fa-bell"></i>
                                         <div
                                             v-if="notifications_count > 0"
                                             class="absolute right-14 top-2 w-5 h-5 bg-red-700 dark:bg-red-400 text-white font-medium border border-white dark:border-gray-900 rounded-full text-xs text-center"
@@ -87,7 +87,9 @@
                                 <Link
                                     :href="route('realtor.listeing.index')"
                                     class="menu-item text-center"
-                                    ><div class="text-sm text-gray-500">🏠</div>
+                                    ><div class="text-sm text-gray-500">
+                                        <i class="fa fa-home"></i>
+                                    </div>
                                 </Link>
                                 <Link
                                     :href="route('profile')"
@@ -100,8 +102,9 @@
                                 <Link
                                     :href="route('listeing.create')"
                                     class="menu-item text-center"
-                                    >➕</Link
                                 >
+                                    <i class="fas fa-plus"></i>
+                                </Link>
                                 <Link
                                     class="menu-item text-center"
                                     :href="route('logout')"
@@ -190,7 +193,7 @@ const toggleDark = () => {
     localStorage.setItem("isDark", isDark.value);
 };
 
-const emoji = computed(() => (isDark.value ? "☀️" : "🌙"));
+const emoji = computed(() => (isDark.value ? "fa fa-sun" : "fa fa-moon"));
 const langs = computed(() => {
     return page.props.languages;
 });

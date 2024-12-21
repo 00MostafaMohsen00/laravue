@@ -55,7 +55,7 @@
                                 @click.prevent="toggleDark"
                                 class="menu-item"
                             >
-                                {{ emoji }}
+                                <i :class="emoji"></i>
                             </button>
                             <div v-if="user" class="flex flex-col gap-1">
                                 <Link
@@ -104,7 +104,7 @@ const toggleDark = () => {
     localStorage.setItem("isDark", isDark.value);
 };
 
-const emoji = computed(() => (isDark.value ? "☀️" : "🌙"));
+const emoji = computed(() => (isDark.value ? "fa fa-sun" : "fa fa-moon"));
 const langs = computed(() => {
     return page.props.languages;
 });

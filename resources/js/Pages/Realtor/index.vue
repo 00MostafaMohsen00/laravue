@@ -41,21 +41,24 @@
                 <Link
                     class="btn-outline w-full text-center"
                     :href="route('listeing.show', listeing.id)"
-                    >{{ $t("preview") }}</Link
                 >
+                    <i class="fas fa-eye icon"></i>
+                </Link>
                 <Link
                     class="btn-outline w-full text-center"
                     :href="route('listeing.edit', listeing.id)"
                     v-if="!listeing.sold_at"
-                    >{{ $t("edit") }}</Link
                 >
+                    <i class="fas fa-edit icon"></i>
+                </Link>
                 <Link
                     class="btn-outline w-full text-center"
                     method="delete"
                     as="button"
                     :href="route('realtor.listeing.destroy', listeing.id)"
-                    >{{ $t("delete") }}</Link
                 >
+                    <i class="fas fa-trash icon"></i>
+                </Link>
             </div>
             <div
                 class="flex items-center gap-1 text-gray-600 dark:text-gray-300 my-8"
@@ -64,19 +67,24 @@
                 <Link
                     class="btn-outline w-full text-center"
                     :href="route('realtor.listeing.restore', listeing.id)"
-                    >{{ $t("restore") }}</Link
                 >
+                    <i class="fas fa-trash-restore icon"></i>
+                </Link>
             </div>
             <div class="mt-2" v-if="!listeing.deleted_at">
                 <Link
                     :href="route('images.create', listeing.id)"
                     class="block btn-outline w-full text-xs font-medium text-center"
-                    >{{ $t("images") }} ({{ listeing.images_count }})</Link
+                    ><i class="fas fa-images icon"></i> ({{
+                        listeing.images_count
+                    }})</Link
                 >
                 <Link
                     :href="route('offer.index', listeing.id)"
                     class="block btn-outline w-full text-xs font-medium text-center mt-2"
-                    >{{ $t("offers") }} ({{ listeing.offers_count }})</Link
+                >
+                    <i class="fas fa-handshake icon"></i>
+                    ({{ listeing.offers_count }})</Link
                 >
             </div>
         </Box>

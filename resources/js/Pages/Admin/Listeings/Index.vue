@@ -29,16 +29,18 @@
                             v-if="!listeing.deleted_at"
                             class="btn-outline text-center"
                             :href="route('listeings.show', listeing.id)"
-                            >{{ $t("preview") }}</Link
                         >
+                            <i class="fas fa-eye icon"></i>
+                        </Link>
                         <Link
                             class="btn-red text-center"
                             method="delete"
                             as="button"
                             v-if="canDelete"
                             :href="route('listeings.destroy', listeing.id)"
-                            >{{ $t("delete") }}</Link
                         >
+                            <i class="fas fa-trash icon"></i>
+                        </Link>
                     </div>
                 </div>
             </box>
@@ -50,7 +52,7 @@
 
 <script setup>
 import Box from "@/Components/UI/Box.vue";
-import { defineProps, computed, ref } from "vue";
+import { defineProps, computed } from "vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import Empty from "@/Components/UI/Empty.vue";
 import ListeingAddress from "@/Components/ListeingAddress.vue";

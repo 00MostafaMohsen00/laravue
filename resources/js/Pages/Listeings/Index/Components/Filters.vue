@@ -51,8 +51,12 @@
                     v-model.number="filterForm.areaTo"
                 />
             </div>
-            <button type="submit" class="btn-dark">{{ $t("filter") }}</button>
-            <button type="reset" @click="reset">{{ $t("reset") }}</button>
+            <button type="submit" class="btn-dark">
+                <i class="fas fa-filter"></i>
+            </button>
+            <button type="reset" @click="reset">
+                <i class="fas fa-undo"></i>
+            </button>
         </div>
     </form>
 </template>

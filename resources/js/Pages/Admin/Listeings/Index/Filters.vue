@@ -90,7 +90,7 @@
             <label for="soled">{{ $t("sold") }}</label>
         </div>
         <button type="reset" @click="reset" class="btn-outline">
-            {{ $t("reset") }}
+            <i class="fas fa-undo icon"></i>
         </button>
     </div>
 </template>
