@@ -2,7 +2,9 @@
     <box class="h-screen">
         <template #title> {{ $t("users") }} </template>
         <Link :href="route('users.create')" class="my-4" v-if="canCreate">
-            <button class="btn-border">+</button>
+            <button class="btn-border">
+                <i class="fas fa-plus icon"></i>
+            </button>
         </Link>
         <div class="flex justify-center text-center my-2">
             <input
@@ -35,14 +37,21 @@
                             as="button"
                             class="btn-outline"
                         >
-                            {{ user.status == "1" ? "❌" : "✅" }}
+                            <i
+                                v-if="user.status == '1'"
+                                class="fas fa-xmark icon text-red-500 dark:text-red-600"
+                            ></i>
+                            <i
+                                v-else
+                                class="fas fa-check icon text-green-500 dark:text-green-600"
+                            ></i>
                         </Link>
                         <Link
                             v-if="canUpdate"
                             :href="route('users.edit', user.id)"
                             class="btn-outline"
                         >
-                            {{ $t("edit") }}
+                            <i class="fas fa-edit icon"></i>
                         </Link>
                     </div>
                 </div>

@@ -2,7 +2,9 @@
     <box class="h-screen">
         <template #title> {{ $t("admins") }} </template>
         <Link :href="route('admins.create')" class="my-4">
-            <button class="btn-border">+</button>
+            <button class="btn-border">
+                <i class="fas fa-plus icon"></i>
+            </button>
         </Link>
         <div v-if="admins.data.length">
             <box
@@ -26,7 +28,7 @@
                             :href="route('admins.edit', admin.id)"
                             class="btn-outline"
                         >
-                            {{ $t("edit") }}
+                            <i class="fas fa-edit icon"></i>
                         </Link>
                         <delete-button
                             :url="route('admins.destroy', admin.id)"

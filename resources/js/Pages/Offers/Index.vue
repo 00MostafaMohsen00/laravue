@@ -1,7 +1,8 @@
 <template>
     <div class="mb-4">
         <Link :href="route('realtor.listeing.index')">
-            ⬅️ {{ $t("go_to_listeing") }}</Link
+            <i class="fas fa-arrow-left"></i>
+            {{ $t("go_to_listeing") }}</Link
         >
     </div>
     <section class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">

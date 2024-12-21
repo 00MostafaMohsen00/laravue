@@ -24,7 +24,9 @@
                         class="flex flex-col justify-center w-full cursor-pointer"
                     >
                         <span class="text-gray-400 flex justify-center p-7">
-                            📁
+                            <i
+                                class="fas fa-cloud-upload-alt text-4xl icon"
+                            ></i>
                         </span>
                         <span class="text-gray-400 flex justify-center p-7">
                             {{ $t("drop_images_here") }}</span
@@ -37,10 +39,10 @@
                         class="btn-outline disabled:opacity-25 disabled:cursor-not-allowed"
                         :disabled="!canUpload"
                     >
-                        {{ $t("upload") }}
+                        <i class="fas fa-upload icon"></i>
                     </button>
                     <button type="reset" class="btn-outline" @click="reset">
-                        {{ $t("reset") }}
+                        <i class="fas fa-undo"></i>
                     </button>
                 </div>
                 <div class="flex flex-col">
@@ -62,7 +64,7 @@
                         class="btn-outline m-2"
                         @click.prevent="remove(index)"
                     >
-                        {{ $t("delete") }}
+                        <i class="fas fa-trash icon"></i>
                     </button>
                 </Box>
             </div>
