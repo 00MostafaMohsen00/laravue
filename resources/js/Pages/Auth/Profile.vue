@@ -20,12 +20,14 @@
                     v-model="form.email"
                     required
                     class="input"
+                    :disabled="user.provider"
                 />
                 <error v-if="form.errors.email" :error="form.errors.email" />
             </div>
             <div class="mt-4 flex flex-col">
                 <input type="submit" :value="$t('save')" class="btn w-full" />
                 <Link
+                    v-if="!user.provider"
                     :href="route('change.password')"
                     class="mb-4 text-sm text-blue-600"
                     >{{ $t("change_password") }}</Link
