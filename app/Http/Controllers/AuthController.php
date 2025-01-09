@@ -48,6 +48,8 @@ class AuthController extends Controller
 
     public function profileSave(ProfileRequest $request)
     {
+        $data = $request->validated();
+        $data['email'] = auth()->user()->provider ? auth()->user()->email : $data['email'];
         $user = auth()->user();
         $user->update($request->validated());
         return redirect()->route('profile')->with('success', __('lang.success'));
