@@ -23,6 +23,9 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.put(route("listeing.update", props.listeing.id), form);
+    form.put(route("listeing.update", props.listeing.id), form, {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

@@ -37,6 +37,9 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("admins.store"));
+    form.post(route("admins.store"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

@@ -47,6 +47,9 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("roles.store"));
+    form.post(route("roles.store"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

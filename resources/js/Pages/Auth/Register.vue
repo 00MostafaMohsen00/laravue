@@ -81,6 +81,9 @@ const form = useForm({
     password_confirmation: null,
 });
 const register = () => {
-    form.post(route("register.save"));
+    form.post(route("register.save"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

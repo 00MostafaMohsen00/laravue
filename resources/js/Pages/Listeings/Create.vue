@@ -19,6 +19,9 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("listeing.store"), form);
+    form.post(route("listeing.store"), form, {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

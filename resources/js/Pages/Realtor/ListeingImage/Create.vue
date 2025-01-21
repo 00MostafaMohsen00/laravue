@@ -111,12 +111,19 @@ const form = useForm({
 const previews = ref([]);
 
 const submit = () => {
-    form.post(route("images.store", props.listeing.id), {
-        onSuccess: () => {
-            form.reset("images");
-            previews.value = [];
+    form.post(
+        route("images.store", props.listeing.id),
+        {
+            onSuccess: () => {
+                form.reset("images");
+                previews.value = [];
+            },
         },
-    });
+        {
+            preserveScroll: true,
+            preserveState: true,
+        }
+    );
 };
 
 const handleDrop = (event) => {

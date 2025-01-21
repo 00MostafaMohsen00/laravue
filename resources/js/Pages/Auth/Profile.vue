@@ -48,6 +48,9 @@ const form = useForm({
     email: props.user.email,
 });
 const save = () => {
-    form.post(route("profile.save"));
+    form.post(route("profile.save"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

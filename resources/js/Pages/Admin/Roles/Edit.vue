@@ -50,6 +50,9 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.put(route("roles.update", props.role.id));
+    form.put(route("roles.update", props.role.id), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>
