@@ -35,6 +35,9 @@ const form = useForm({
     new_password: null,
 });
 const save = () => {
-    form.post(route("reset.password"));
+    form.post(route("reset.password"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

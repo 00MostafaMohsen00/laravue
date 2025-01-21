@@ -40,6 +40,9 @@ const form = useForm({
     password: null,
 });
 const save = () => {
-    form.post(route("admin.login.save"));
+    form.post(route("admin.login.save"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

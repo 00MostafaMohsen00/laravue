@@ -33,7 +33,10 @@ const deleteImage = () => {
         },
     }).then((result) => {
         if (result.isConfirmed) {
-            router.delete(props.url);
+            router.delete(props.url, {
+                preserveScroll: true,
+                preserveState: true,
+            });
         }
     });
 };

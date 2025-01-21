@@ -62,6 +62,9 @@ const error = computed(() => {
         : null;
 });
 const save = () => {
-    form.post(route("login.save"));
+    form.post(route("login.save"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

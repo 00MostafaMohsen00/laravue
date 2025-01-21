@@ -36,6 +36,9 @@ const error = computed(() => {
         : null;
 });
 const save = () => {
-    form.post(route("forget.password.save"));
+    form.post(route("forget.password.save"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

@@ -73,6 +73,9 @@ const form = useForm({
     confirm_password: null,
 });
 const save = () => {
-    form.post(route("change.password.save"));
+    form.post(route("change.password.save"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>

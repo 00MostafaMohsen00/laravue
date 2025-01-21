@@ -77,7 +77,9 @@ const handlePaste = (event) => {
 };
 
 const save = () => {
-    console.log("OTP Submitted:", form.otp);
-    form.post(route("otp.save"));
+    form.post(route("otp.save"), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 };
 </script>
