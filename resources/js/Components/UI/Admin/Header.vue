@@ -63,15 +63,17 @@
                                     :href="route('admin.logout')"
                                     method="delete"
                                     as="button"
-                                    >{{ $t("logout") }}</Link
                                 >
+                                    <i class="fa fa-arrow-right"></i>
+                                </Link>
                             </div>
                             <div v-else class="flex items-center gap-4">
                                 <Link
                                     :href="route('admin.login')"
                                     class="menu-item text-center"
-                                    >{{ $t("login") }}</Link
                                 >
+                                    <i class="fa fa-arrow-left"></i>
+                                </Link>
                             </div>
                         </div>
                     </transition>
