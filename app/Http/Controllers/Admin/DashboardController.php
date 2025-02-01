@@ -12,6 +12,8 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $users = User::count();
+        $active_users = User::where('status', '1')->count();
+        $inactive_users = $users - $active_users;
         $listeings = Listeing::count();
         return inertia('Admin/Dashboard/Dashboard', get_defined_vars());
     }
