@@ -10,13 +10,13 @@ export default defineConfig({
         }),
         vue({
             template: {
-                base:null,
+                base: null,
                 includeAbsolute: false,
             },
         }),
     ],
-    resolve:{
-        alias:{
+    resolve: {
+        alias: {
             ziggy: path.resolve('vendor/tightenco/ziggy/dist/index.esm.js'),
         },
     },
@@ -25,7 +25,11 @@ export default defineConfig({
         port: 3000,
         strictPort: true,
         hmr: {
+            protocol: 'ws',
             host: '192.168.1.8',
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*', // Allow CORS
         },
         watch: {
             usePolling: true,
