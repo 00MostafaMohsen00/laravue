@@ -15,7 +15,7 @@
 
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3";
-import { defineProps, computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted } from "vue";
 import Box from "@/Components/UI/Box.vue";
 import { usePermission } from "@/Composable/usePermission";
 import { isNull } from "lodash";

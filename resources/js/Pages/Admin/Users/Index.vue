@@ -64,7 +64,7 @@
 
 <script setup>
 import Box from "@/Components/UI/Box.vue";
-import { defineProps, watch, reactive, ref, onMounted, computed } from "vue";
+import { watch, reactive, ref, onMounted, computed } from "vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import Empty from "@/Components/UI/Empty.vue";
 import { useI18n } from "vue-i18n";

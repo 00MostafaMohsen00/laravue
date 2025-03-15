@@ -32,7 +32,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
 import Box from "@/Components/UI/Box.vue";
 
 defineProps({

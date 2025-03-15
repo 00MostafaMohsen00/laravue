@@ -23,7 +23,6 @@
 import Box from "@/Components/UI/Box.vue";
 import Fields from "./Fields.vue";
 import { useForm } from "@inertiajs/vue3";
-import { defineProps } from "vue";
 import { Link } from "@inertiajs/vue3";
 const props = defineProps({
     user: Object,

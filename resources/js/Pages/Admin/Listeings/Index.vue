@@ -52,7 +52,7 @@
 
 <script setup>
 import Box from "@/Components/UI/Box.vue";
-import { defineProps, computed } from "vue";
+import { computed } from "vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import Empty from "@/Components/UI/Empty.vue";
 import ListeingAddress from "@/Components/ListeingAddress.vue";
