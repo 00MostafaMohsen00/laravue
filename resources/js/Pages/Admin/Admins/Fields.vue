@@ -52,6 +52,5 @@ import Error from "@/Components/UI/Error.vue";
 const props = defineProps({
     form: Object,
     roles: Array,
-    role_id: null,
 });
 </script>

@@ -1,8 +1,8 @@
 <template>
     <Header />
-    <div class="md:flex md:flex-row grid gap-4">
+    <div class="md:flex md:flex-row grid gap-4 min-h-screen">
         <Side class="min-w-60" v-if="user" />
-        <main class="container mx-auto p-4 min-h-screen min-w-80">
+        <main class="container mx-auto p-4 min-w-80">
             <Message />
             <Loader v-show="isLoading" />
             <div v-show="!isLoading">
@@ -24,7 +24,6 @@ import { usePage } from "@inertiajs/vue3";
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { router } from "@inertiajs/vue3";
 import { useStore } from "vuex";
-import { mapGetters } from "vuex";
 
 const store = useStore();
 

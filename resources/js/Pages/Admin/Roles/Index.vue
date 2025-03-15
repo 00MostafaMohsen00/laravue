@@ -36,7 +36,6 @@
 <script setup>
 import Box from "@/Components/UI/Box.vue";
 import { Link } from "@inertiajs/vue3";
-import { defineProps } from "vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 import DeleteButton from "@/Components/UI/DeleteButton.vue";
 import Empty from "@/Components/UI/Empty.vue";
