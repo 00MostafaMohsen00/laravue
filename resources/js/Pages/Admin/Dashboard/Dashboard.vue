@@ -2,14 +2,14 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <box class="bg-blue-100 dark:bg-blue-900">
             <template #title>
-                <i class="fas fa-users icon"></i> {{ $t("Users") }}
+                <i class="fas fa-users icon"></i> {{ $t("users") }}
             </template>
             <div class="text-3xl font-bold">{{ users }}</div>
         </box>
         <box class="bg-green-100 dark:bg-green-900">
             <template #title>
                 <i class="fas fa-users icon"></i>{{ $t("active") }}
-                {{ $t("Users") }}
+                {{ $t("users") }}
             </template>
             <div class="text-3xl font-bold">{{ active_users }}</div>
         </box>
@@ -17,7 +17,7 @@
         <box class="bg-red-100 dark:bg-red-900">
             <template #title>
                 <i class="fas fa-users icon"></i>{{ $t("inactive") }}
-                {{ $t("Users") }}
+                {{ $t("users") }}
             </template>
             <div class="text-3xl font-bold">{{ inactive_users }}</div>
         </box>
