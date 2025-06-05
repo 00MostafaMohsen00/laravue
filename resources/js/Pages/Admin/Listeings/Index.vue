@@ -21,7 +21,7 @@
                     <div class="flex flex-col gap-2">
                         <span
                             v-if="listeing.sold_at"
-                            class="text-xs font-bold uppercase border border-dashed p-1 border-green-300 text-green-500 dark:border-green-600 dark:text-green-600 inline-block rounded-md mb-2"
+                            class="text-xs font-bold uppercase border border-dashed p-1 border-green-300 text-green-500 dark:border-green-600 dark:text-green-600 rounded-md mb-2 text-center flex justify-center"
                         >
                             {{ $t("sold") }}
                         </span>
