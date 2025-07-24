@@ -66,7 +66,14 @@ class AuthController extends Controller
 
     public function socialLoginCallback(Request $request, $provider)
     {
-        $providerUser = Socialite::driver($provider)->stateless()->user();
+        $providerUser = Socialite::driver($provider)->stateless();
+        try {
+            $providerUser = $providerUser->user();
+        } catch (\Exception $e) {
+
+
+            return redirect()->route('login');
+        }
         $user = User::where('email', $providerUser->getEmail())->first();
         if (!$user) {
             $data = [
